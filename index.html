@@ -24,9 +24,9 @@ p,h1,h2,h3,ul{margin:0}
 h1,h2,h3{font-weight:500;font-size:15px}
 .item h3{font-size:17px}
 header,footer{font-size:13px}
-header{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding-block:14px}
+header{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding-block:14px}
 header div{display:flex;flex-direction:column;min-width:0}
-header .s{color:var(--soft)}
+header .s{color:var(--soft);overflow-wrap:anywhere}
 .mail{user-select:all;overflow-wrap:anywhere}
 @media (max-width:640px){header{grid-template-columns:repeat(2,1fr);row-gap:10px} }
 
@@ -134,7 +134,6 @@ footer .s{color:var(--soft)}
 </svg>
 
 <header>
-  <div><span>Qiulin</span><span class="s">AI-Native Product Builder</span></div>
   <div><a href="#projects">Projects</a><span class="s">Agents · Tools · Evals</span></div>
   <div><span>Singapore / China</span><span class="s">中文 / English</span></div>
   <div><span>Email</span><a class="s mail" href="mailto:creole12138@gmail.com">creole12138@gmail.com</a></div>
