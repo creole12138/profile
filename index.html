@@ -32,11 +32,15 @@ header .s{color:var(--soft)}
 @media (prefers-reduced-motion:reduce){.doodle svg{transition:none}}
 @media (max-width:640px){
 }
+.hero{padding-block:clamp(28px,6vw,64px) 8px;display:flex;flex-direction:column;gap:6px}
+.name{font-size:clamp(56px,13vw,168px);font-weight:500;letter-spacing:-.045em;line-height:.9;margin:0}
+.role{font-size:clamp(14px,1.6vw,18px);color:var(--soft)}
 .fieldwrap{margin-block:28px 48px}
-.zones{display:grid;grid-template-columns:3fr 1.2fr;grid-template-rows:auto auto;gap:0}
+.zones{display:grid;grid-template-columns:1.2fr 3fr;grid-template-rows:auto auto;gap:0}
 .zone{position:relative;border-top:1px solid var(--ink);padding-top:10px;min-width:0}
-.z-proj{grid-row:1/3;border-right:1px dashed var(--rule);padding-right:12px}
-.z-work,.z-life{padding-left:16px}
+.z-proj{grid-column:2;grid-row:1/3;border-left:1px dashed var(--rule);padding-left:16px}
+.z-work,.z-life{grid-column:1;padding-right:16px}
+.z-work{grid-row:1}.z-life{grid-row:2}
 .z-life{border-top:1px dashed var(--rule)}
 .zl{font-size:12px;font-weight:500;display:flex;gap:10px;align-items:baseline}
 .zl em{font-style:normal;color:var(--soft);font-weight:400}
@@ -51,9 +55,9 @@ header .s{color:var(--soft)}
 @media (prefers-reduced-motion:reduce){.doodle{transition:none}}
 @media (max-width:720px){
   .zones{grid-template-columns:1fr 1fr}
-  .z-proj{grid-row:auto;grid-column:1/-1;border-right:0;padding-right:0}
-  .z-work{padding-left:0;border-top:1px solid var(--ink)}
-  .z-life{padding-left:12px;border-top:1px solid var(--ink);border-left:1px dashed var(--rule)}
+  .z-proj{grid-row:3;grid-column:1/-1;border-left:0;padding-left:0}
+  .z-work{grid-row:1;grid-column:1;padding-right:0;border-top:1px solid var(--ink)}
+  .z-life{grid-row:1;grid-column:2;padding-right:0;padding-left:12px;border-top:1px solid var(--ink);border-left:1px dashed var(--rule)}
   .z-work .doodle,.z-life .doodle{flex:1 1 100%}
   .doodle svg{width:52px}
   .doodle span{white-space:normal;text-align:center}
@@ -122,6 +126,7 @@ footer .s{color:var(--soft)}
   <div><span>GitHub</span><a class="s" href="https://github.com/creole12138" target="_blank" rel="noopener">github.com/creole12138</a></div>
 </header>
 
+<div class="hero"><h1 class="name">Qiulin</h1><p class="role">AI-Native Product Builder · 7 年营收与创作者产品</p></div>
 <div class="fieldwrap">
 <div class="zones">
   <section class="zone z-proj" aria-label="个人项目">
