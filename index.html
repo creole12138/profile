@@ -26,7 +26,7 @@ header{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding-block:1
 header div{display:flex;flex-direction:column;min-width:0}
 header .s{color:var(--soft)}
 .mail{user-select:all;overflow-wrap:anywhere}
-@media (max-width:640px){header{grid-template-columns:repeat(2,1fr)} header div:nth-child(n+3){display:none}}
+@media (max-width:640px){header{grid-template-columns:repeat(2,1fr);row-gap:10px} header div:nth-child(5){grid-column:1/-1}}
 
 
 @media (prefers-reduced-motion:reduce){.doodle svg{transition:none}}
@@ -50,9 +50,14 @@ header .s{color:var(--soft)}
 .doodle:hover,.doodle:focus-visible{transform:rotate(0deg) scale(1.08);background:var(--mark)}
 @media (prefers-reduced-motion:reduce){.doodle{transition:none}}
 @media (max-width:720px){
-  .zones{grid-template-columns:1fr}
-  .z-proj{grid-row:auto;border-right:0;padding-right:0}
-  .z-work,.z-life{padding-left:0;border-top:1px solid var(--ink)}
+  .zones{grid-template-columns:1fr 1fr}
+  .z-proj{grid-row:auto;grid-column:1/-1;border-right:0;padding-right:0}
+  .z-work{padding-left:0;border-top:1px solid var(--ink)}
+  .z-life{padding-left:12px;border-top:1px solid var(--ink);border-left:1px dashed var(--rule)}
+  .z-work .doodle,.z-life .doodle{flex:1 1 100%}
+  .doodle svg{width:52px}
+  .doodle span{white-space:normal;text-align:center}
+  .intro{margin-bottom:40px}
   .scatter,.z-work .scatter,.z-life .scatter{height:auto;display:flex;flex-wrap:wrap;gap:14px 10px;padding-block:12px}
   .doodle{position:static;flex:0 1 calc(33% - 10px)}
 }
@@ -70,7 +75,9 @@ main{display:flex;flex-direction:column;gap:64px;padding-bottom:40px}
 @keyframes flash{0%,40%{background:var(--mark)}100%{background:transparent}}
 .item .meta{color:var(--soft)}
 .item .when{color:var(--soft);text-align:right;font-variant-numeric:tabular-nums}
-.item .body{display:flex;flex-direction:column;gap:6px;max-width:60ch}
+.item .body{display:block;max-width:60ch}
+.item .body > * + *{margin-top:6px}
+.item .when:empty{display:none}
 .item ul{padding-left:1em;display:flex;flex-direction:column;gap:3px}
 .item b{font-weight:500}
 .item svg{width:56px;height:auto}
