@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Qiulin：AI 产品构建者，7 年营收与创作者产品经验，个人项目与履历。">
 <title>Qiulin · AI 产品构建者</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=Noto+Sans+SC:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Inter+Tight:wght@400;500&family=Noto+Sans+SC:wght@400;500&display=swap">
 <style>
 /* Layout: 白纸 + 极小号五栏页眉 + 散落的手绘线稿，每幅线稿点开一个项目；下方是同样克制的小字正文 */
 :root{
-  --paper:#FFFFFF; --ink:#111111; --soft:#8A8A8A; --rule:#E6E6E6; --mark:#FFF1A8; --accent:#2B4FD8;
+  --paper:#FFFFFF; --ink:#111111; --soft:#8A8A8A; --rule:#E6E6E6; --mark:#FFF1A8; --accent:#1414F5; --mono:"Fragment Mono",ui-monospace,Menlo,monospace;
   --text:"Inter Tight","Noto Sans SC","PingFang SC",system-ui,sans-serif;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#121212;--ink:#EDEDED;--soft:#8E8E8E;--rule:#2A2A2A;--mark:#4A4320;--accent:#8EA6FF;color-scheme:dark}}
-:root[data-theme="dark"]{--paper:#121212;--ink:#EDEDED;--soft:#8E8E8E;--rule:#2A2A2A;--mark:#4A4320;--accent:#8EA6FF;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#121212;--ink:#EDEDED;--soft:#8E8E8E;--rule:#2A2A2A;--mark:#4A4320;--accent:#8A8AFF;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#121212;--ink:#EDEDED;--soft:#8E8E8E;--rule:#2A2A2A;--mark:#4A4320;--accent:#8A8AFF;color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--text);font-size:15px;line-height:1.6;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -35,7 +35,9 @@ header .s{color:var(--soft)}
 @media (max-width:640px){
 }
 .hero{padding-block:clamp(28px,6vw,64px) 8px;display:flex;flex-direction:column;gap:6px}
-.name{font-size:clamp(56px,13vw,168px);font-weight:500;letter-spacing:-.045em;line-height:.9;margin:0}
+.name{font-family:var(--mono);color:var(--accent);font-size:clamp(52px,12vw,156px);font-weight:400;letter-spacing:-.04em;line-height:.95;margin:0;min-height:1em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.name.swap{animation:swap .28s ease-out}
+@keyframes swap{from{opacity:0;transform:translateY(.12em)}to{opacity:1;transform:none}}
 .role{font-size:clamp(14px,1.6vw,18px);color:var(--soft)}
 .fieldwrap{margin-block:28px 48px}
 .zones{display:grid;grid-template-columns:1.2fr 3fr;grid-template-rows:auto auto;gap:0}
@@ -48,12 +50,23 @@ header .s{color:var(--soft)}
 .zl em{font-style:normal;color:var(--soft);font-weight:400}
 .scatter{position:relative;height:360px}
 .z-work .scatter,.z-life .scatter{height:162px}
-.doodle{position:absolute;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;padding:6px;color:var(--accent);cursor:pointer;font:inherit;border-radius:10px;transform:rotate(var(--r,0deg));transition:transform .35s cubic-bezier(.3,1.6,.5,1),background .2s}
+.doodle{position:absolute;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;padding:6px;color:var(--ink);cursor:pointer;font:inherit;transform:rotate(var(--r,0deg));transition:transform .4s cubic-bezier(.3,1.7,.5,1)}
 .doodle svg{width:clamp(60px,7.5vw,92px);height:auto;overflow:visible}
-.doodle svg *{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.doodle svg *{fill:transparent;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:fill .25s}
 .doodle svg .fill{fill:currentColor;stroke:none}
-.doodle span{font-size:12px;color:var(--ink);white-space:nowrap;border-bottom:1px solid var(--accent)}
-.doodle:hover,.doodle:focus-visible{transform:rotate(0deg) scale(1.08);background:var(--mark)}
+.doodle span{font-size:12px;color:var(--soft);white-space:nowrap;transition:color .2s}
+.doodle .spark{position:absolute;inset:0;pointer-events:none}
+.doodle .spark i{position:absolute;width:10px;height:10px;opacity:0;color:var(--accent)}
+.doodle .spark i::before,.doodle .spark i::after{content:"";position:absolute;left:4px;top:0;width:2px;height:10px;background:currentColor;border-radius:1px}
+.doodle .spark i::after{transform:rotate(90deg)}
+.doodle .spark i:nth-child(1){left:2%;top:8%}.doodle .spark i:nth-child(2){right:4%;top:2%}.doodle .spark i:nth-child(3){right:0;top:48%}.doodle .spark i:nth-child(4){left:6%;top:56%}
+.doodle:hover,.doodle:focus-visible{transform:rotate(calc(var(--r,0deg) * -1)) scale(1.1)}
+.doodle:hover svg *:not(.fill),.doodle:focus-visible svg *:not(.fill){fill:var(--mark)}
+.doodle:hover span,.doodle:focus-visible span{color:var(--accent)}
+.doodle:hover .spark i,.doodle:focus-visible .spark i{animation:pop .7s ease-out both}
+.doodle:hover .spark i:nth-child(2){animation-delay:.08s}.doodle:hover .spark i:nth-child(3){animation-delay:.16s}.doodle:hover .spark i:nth-child(4){animation-delay:.24s}
+@keyframes pop{0%{opacity:0;transform:scale(.2) rotate(0)}40%{opacity:1;transform:scale(1.2) rotate(45deg)}100%{opacity:0;transform:scale(.6) rotate(90deg)}}
+@media (prefers-reduced-motion:reduce){.doodle .spark{display:none}.name.swap{animation:none}}
 @media (prefers-reduced-motion:reduce){.doodle{transition:none}}
 @media (max-width:720px){
   .zones{grid-template-columns:1fr 1fr}
@@ -92,7 +105,7 @@ main{display:flex;flex-direction:column;gap:64px;padding-bottom:40px}
 .n{font-variant-numeric:tabular-nums;background:var(--mark);padding:0 .15em}
 @media (max-width:640px){.item{grid-template-columns:1fr}.item .when{text-align:left}}
 .tags{color:var(--soft)}
-.repo{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+.repo{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 .shot{margin:4px 0;max-width:620px;display:flex;flex-direction:column;gap:4px}.shot img{display:block;width:100%;border:1px solid var(--rule)}.shot figcaption{color:var(--soft)}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pair img{min-width:0}
 .pair.phone{max-width:340px}
@@ -128,7 +141,7 @@ footer .s{color:var(--soft)}
   <div><span>GitHub</span><a class="s" href="https://github.com/creole12138" target="_blank" rel="noopener">github.com/creole12138</a></div>
 </header>
 
-<div class="hero"><h1 class="name">Qiulin</h1><p class="role">AI-Native Product Builder · 7 年营收与创作者产品</p></div>
+<div class="hero"><h1 class="name" aria-live="off">Qiulin</h1><p class="role">AI-Native Product Builder · 7 年营收与创作者产品</p></div>
 <div class="fieldwrap">
 <div class="zones">
   <section class="zone z-proj" aria-label="个人项目">
@@ -303,6 +316,14 @@ footer .s{color:var(--soft)}
 </footer>
 
 <script>
+const nm=document.querySelector('.name'),orig=nm?nm.textContent:'';
+function setName(t){if(!nm||nm.textContent===t)return;nm.textContent=t;nm.classList.remove('swap');void nm.offsetWidth;nm.classList.add('swap');}
+document.querySelectorAll('.doodle').forEach(b=>{
+  const sp=document.createElement('span');sp.className='spark';sp.setAttribute('aria-hidden','true');sp.innerHTML='<i></i><i></i><i></i><i></i>';b.appendChild(sp);
+  const lab=b.dataset.go==='work'?'工作履历':b.querySelector('span').textContent.replace(' 工作 Agent','');
+  b.addEventListener('mouseenter',()=>setName(lab));b.addEventListener('focus',()=>setName(lab));
+  b.addEventListener('mouseleave',()=>setName(orig));b.addEventListener('blur',()=>setName(orig));
+});
 document.querySelectorAll('.doodle').forEach(b=>b.addEventListener('click',()=>{
   const t=document.getElementById(b.dataset.go); if(!t) return;
   t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
