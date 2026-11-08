@@ -24,11 +24,11 @@ p,h1,h2,h3,ul{margin:0}
 h1,h2,h3{font-weight:500;font-size:15px}
 .item h3{font-size:17px}
 header,footer{font-size:13px}
-header{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding-block:14px}
+header{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding-block:14px}
 header div{display:flex;flex-direction:column;min-width:0}
 header .s{color:var(--soft)}
 .mail{user-select:all;overflow-wrap:anywhere}
-@media (max-width:640px){header{grid-template-columns:repeat(2,1fr);row-gap:10px} header div:nth-child(5){grid-column:1/-1}}
+@media (max-width:640px){header{grid-template-columns:repeat(2,1fr);row-gap:10px} }
 
 
 @media (prefers-reduced-motion:reduce){.doodle svg{transition:none}}
@@ -120,7 +120,7 @@ main{display:flex;flex-direction:column;gap:64px;padding-bottom:40px}
 .facts .big{font-size:clamp(22px,3vw,34px);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .facts .s{color:var(--soft)}
 @media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
-footer{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding-block:14px 24px;border-top:1px solid var(--ink)}
+footer{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding-block:14px 24px;border-top:1px solid var(--ink)}
 footer div{display:flex;flex-direction:column;min-width:0}
 footer .s{color:var(--soft)}
 @media (max-width:640px){footer{grid-template-columns:1fr 1fr}}
@@ -139,6 +139,7 @@ footer .s{color:var(--soft)}
   <div><span>Singapore / China</span><span class="s">中文 / English</span></div>
   <div><span>Email</span><a class="s mail" href="mailto:creole12138@gmail.com">creole12138@gmail.com</a></div>
   <div><span>GitHub</span><a class="s" href="https://github.com/creole12138" target="_blank" rel="noopener">github.com/creole12138</a></div>
+  <div><span>超线性学院</span><a class="s" href="https://www.superlinear.academy/u/2d9eb0d8" target="_blank" rel="noopener">Superlinear Academy 主页</a></div>
 </header>
 
 <div class="hero"><h1 class="name" aria-live="off">Qiulin</h1><p class="role">AI-Native Product Builder · 7 年营收与创作者产品 + 策略，向 AI-native 超级个体转型实践</p></div>
@@ -313,6 +314,7 @@ footer .s{color:var(--soft)}
   <div><span class="s">Singapore / China</span></div>
   <div><span>Email</span><a class="s mail" href="mailto:creole12138@gmail.com">creole12138@gmail.com</a></div>
   <div><span>GitHub</span><a class="s" href="https://github.com/creole12138" target="_blank" rel="noopener">github.com/creole12138</a></div>
+  <div><span>超线性学院</span><a class="s" href="https://www.superlinear.academy/u/2d9eb0d8" target="_blank" rel="noopener">Superlinear Academy 主页</a></div>
 </footer>
 
 <script>
