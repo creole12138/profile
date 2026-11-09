@@ -36,8 +36,15 @@ header .s{color:var(--soft);overflow-wrap:anywhere}
 @media (prefers-reduced-motion:reduce){.doodle svg{transition:none}}
 @media (max-width:640px){
 }
-.hero{padding-block:clamp(28px,6vw,64px) 8px;display:flex;flex-direction:column;gap:6px}
-.name{font-family:var(--mono);color:var(--accent);font-size:clamp(52px,12vw,156px);font-weight:400;letter-spacing:-.04em;line-height:.95;margin:0;min-height:1em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hero{padding-block:clamp(28px,6vw,64px) 8px;display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:16px clamp(32px,6vw,96px);align-items:end}
+.hero > *{min-width:0}
+.hl{display:flex;flex-direction:column;gap:6px}
+.hr{display:flex;flex-direction:column;gap:12px;padding-bottom:.6em;max-width:36em}
+.pitch{font-size:clamp(19px,1.9vw,28px);line-height:1.45;letter-spacing:-.01em}
+.pitch mark{background:var(--mark);color:inherit;padding:0 .1em}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.hr{padding-bottom:0}}
+.name{max-width:none;font-family:var(--mono);color:var(--accent);font-size:clamp(52px,12vw,156px);font-weight:400;letter-spacing:-.04em;line-height:.95;margin:0;min-height:1em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.name.long{font-size:clamp(28px,3.6vw,56px);white-space:normal;line-height:1.1;min-height:0}
 .name.swap{animation:swap .28s ease-out}
 @keyframes swap{from{opacity:0;transform:translateY(.12em)}to{opacity:1;transform:none}}
 .about{font-family:var(--mono);color:var(--accent);font-size:clamp(16px,1.6vw,22px);letter-spacing:.02em}
@@ -145,7 +152,10 @@ footer .s{color:var(--soft);overflow-wrap:anywhere}
   <div><span>超线性学院主页</span><a class="s" href="https://www.superlinear.academy/u/2d9eb0d8" target="_blank" rel="noopener">superlinear.academy/u/2d9eb0d8</a></div>
 </header>
 
-<div class="hero"><p class="about">About me</p><h1 class="name" aria-live="off">SQL</h1><p class="role">AI-Native Product Builder · 7 年营收与创作者产品 + 策略，向 AI-native 超级个体转型实践</p></div>
+<div class="hero">
+  <div class="hl"><p class="about">About me</p><h1 class="name" aria-live="off">SQL</h1></div>
+  <div class="hr"><p class="pitch">7 年营收与创作者产品 + 策略，现在专注把 <mark>LLM 与 Agent 接进真实业务流程</mark>：让工具本身更快，再用激励结构让人愿意用。</p><p class="role">AI-Native Product Builder · 向 AI-native 超级个体转型实践</p></div>
+</div>
 <div class="fieldwrap">
 <div class="zones">
   <section class="zone z-proj" aria-label="个人项目">
@@ -162,7 +172,7 @@ footer .s{color:var(--soft);overflow-wrap:anywhere}
   </section>
 </div></div>
 
-<p class="intro">做了 7 年营收和创作者产品。现在专注把 <mark>LLM 与 Agent 接进真实业务流程</mark>：让工具本身更快，再用激励结构让人愿意用。</p>
+
 
 <main>
   <section class="row">
@@ -319,7 +329,7 @@ footer .s{color:var(--soft);overflow-wrap:anywhere}
 
 <script>
 const nm=document.querySelector('.name'),orig=nm?nm.textContent:'';
-function setName(t){if(!nm||nm.textContent===t)return;nm.textContent=t;nm.classList.remove('swap');void nm.offsetWidth;nm.classList.add('swap');}
+function setName(t){if(!nm||nm.textContent===t)return;nm.textContent=t;nm.classList.toggle('long',t.length>5);nm.classList.remove('swap');void nm.offsetWidth;nm.classList.add('swap');}
 document.querySelectorAll('.doodle').forEach(b=>{
   const sp=document.createElement('span');sp.className='spark';sp.setAttribute('aria-hidden','true');sp.innerHTML='<i></i><i></i><i></i><i></i>';b.appendChild(sp);
   const lab=b.dataset.go==='work'?'工作履历':b.querySelector('span').textContent.replace(' 工作 Agent','');
